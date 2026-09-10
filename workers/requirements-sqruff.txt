@@ -1,0 +1,2 @@
+-r requirements.txt
+sqruff==0.40.0
