@@ -189,7 +189,9 @@ def catalog(params):
             signature = name + "(" + ", ".join(p + ": " + (t or "ANY") for p, t in zip(arguments or [], types or [])) + ")" + (" → " + ret if ret else "")
             if signature not in f["signatures"] and len(f["signatures"]) < 8:
                 f["signatures"].append(signature)
-        snapshots = {name: rows(c, f"SELECT * FROM {quote(name)}.snapshots() ORDER BY snapshot_id DESC LIMIT 100") for name in lakes}
+        # Convert in DuckDB so fetching timezone-aware timestamps does not
+        # require Python's optional pytz package in a clean worker environment.
+        snapshots = {name: rows(c, f"SELECT * REPLACE (CAST(snapshot_time AS VARCHAR) AS snapshot_time) FROM {quote(name)}.snapshots() ORDER BY snapshot_id DESC LIMIT 100") for name in lakes}
         default = profile.get("defaultCatalog", attachments[0]["alias"] if attachments else "memory")
         return {"tables": tables, "functions": list(functions.values()), "snapshots": snapshots,
                 "defaultCatalog": default, "defaultSchema": profile.get("defaultSchema", "main"), "engineVersion": duckdb.__version__}
