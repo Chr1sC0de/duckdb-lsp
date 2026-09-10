@@ -1,0 +1,14 @@
+/target/
+**/__pycache__/
+.venv/
+.pytest_cache/
+node_modules/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.duckdb
+*.duckdb.wal
+*.ducklake
+/test-data/
+/test-results/
