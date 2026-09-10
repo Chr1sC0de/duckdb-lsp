@@ -21,7 +21,7 @@ def test_ducklake_catalog_snapshots_and_readonly(tmp_path, backend):
         metadata = "postgres:" + os.environ["DUCKLAKE_TEST_POSTGRES"]
     else:
         metadata = str(tmp_path / "metadata.ducklake")
-    with duckdb.connect(config={"custom_extension_repository": "https://extensions.duckdb.org"}) as c:
+    with duckdb.connect() as c:
         c.execute("INSTALL ducklake; LOAD ducklake")
         if backend == "postgres": c.execute("INSTALL postgres; LOAD postgres")
         c.execute(f"ATTACH {w.literal('ducklake:' + metadata)} AS lake (DATA_PATH {w.literal(str(tmp_path / 'data'))})")
