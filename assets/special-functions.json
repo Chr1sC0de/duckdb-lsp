@@ -1,0 +1,136 @@
+[
+  {
+    "name": "coalesce",
+    "kind": "special",
+    "description": "First non-NULL argument.",
+    "signatures": [
+      "coalesce(value, fallback...) \u2192 ANY"
+    ],
+    "parameters": [
+      "value",
+      "fallback..."
+    ]
+  },
+  {
+    "name": "nullif",
+    "kind": "special",
+    "description": "NULL when arguments are equal.",
+    "signatures": [
+      "nullif(left, right) \u2192 ANY"
+    ],
+    "parameters": [
+      "left",
+      "right"
+    ]
+  },
+  {
+    "name": "if",
+    "kind": "special",
+    "description": "Select a value using a condition.",
+    "signatures": [
+      "if(condition, true_value, false_value) \u2192 ANY"
+    ],
+    "parameters": [
+      "condition",
+      "true_value",
+      "false_value"
+    ]
+  },
+  {
+    "name": "cast",
+    "kind": "special",
+    "description": "Convert an expression to a type.",
+    "signatures": [
+      "cast(expression AS type) \u2192 ANY"
+    ],
+    "parameters": [
+      "expression AS type"
+    ]
+  },
+  {
+    "name": "try_cast",
+    "kind": "special",
+    "description": "Convert an expression, returning NULL on failure.",
+    "signatures": [
+      "try_cast(expression AS type) \u2192 ANY"
+    ],
+    "parameters": [
+      "expression AS type"
+    ]
+  },
+  {
+    "name": "row_number",
+    "kind": "special",
+    "description": "Position of a row within its window partition.",
+    "signatures": [
+      "row_number() \u2192 BIGINT"
+    ],
+    "parameters": []
+  },
+  {
+    "name": "rank",
+    "kind": "special",
+    "description": "Rank within a window partition, with gaps.",
+    "signatures": [
+      "rank() \u2192 BIGINT"
+    ],
+    "parameters": []
+  },
+  {
+    "name": "dense_rank",
+    "kind": "special",
+    "description": "Rank within a window partition, without gaps.",
+    "signatures": [
+      "dense_rank() \u2192 BIGINT"
+    ],
+    "parameters": []
+  },
+  {
+    "name": "lag",
+    "kind": "special",
+    "description": "Value from a previous row in a window.",
+    "signatures": [
+      "lag(expression, offset, default) \u2192 ANY"
+    ],
+    "parameters": [
+      "expression",
+      "offset",
+      "default"
+    ]
+  },
+  {
+    "name": "lead",
+    "kind": "special",
+    "description": "Value from a following row in a window.",
+    "signatures": [
+      "lead(expression, offset, default) \u2192 ANY"
+    ],
+    "parameters": [
+      "expression",
+      "offset",
+      "default"
+    ]
+  },
+  {
+    "name": "first_value",
+    "kind": "special",
+    "description": "First value in a window frame.",
+    "signatures": [
+      "first_value(expression) \u2192 ANY"
+    ],
+    "parameters": [
+      "expression"
+    ]
+  },
+  {
+    "name": "last_value",
+    "kind": "special",
+    "description": "Last value in a window frame.",
+    "signatures": [
+      "last_value(expression) \u2192 ANY"
+    ],
+    "parameters": [
+      "expression"
+    ]
+  }
+]
